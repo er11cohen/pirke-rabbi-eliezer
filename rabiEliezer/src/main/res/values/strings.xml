@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">פרקי רבי אליעזר</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_web">פרקי רבי אליעזר</string>
+    <string name="title_activity_gallery">היסטוריה</string>
+    <string name="cancel">ביטול</string> 
+
+    
+     <string-array name="menu_array">
+        <item>שחזור מיקום אחרון</item>
+        <item>היסטוריה</item>
+        <item>הגדרות</item>
+        <item>עזרה</item>
+        <item>אודות</item>
+    </string-array>
+    
+     <string name="drawer_open">פתח תפריט</string>
+	<string name="drawer_close">סגור תפריט</string>
+</resources>

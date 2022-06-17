@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+  
+   <CheckBoxPreference
+        android:key="CBFullScreen"
+        android:summary="@string/pref_fullScreen"
+        android:icon="@drawable/fullscreen"
+		/>
+    <!--   android:icon="@android:drawable/ic_lock_power_off"-->
+    
+     <CheckBoxPreference
+        android:key="CBKeepScreenOn"
+        android:summary="@string/pref_keepScreenOn"
+        android:icon="@drawable/keepscreenon"
+		/>
+        
+   <ListPreference
+        android:defaultValue="-1"
+        android:entries="@array/pref_phone_status_titles"
+        android:entryValues="@array/pref_phone_status_values"
+        android:key="phone_status"
+        android:negativeButtonText="@string/cancel"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_phone_status" 
+        android:icon="@drawable/mute"/>
+
+   
+
+</PreferenceScreen>

@@ -1,0 +1,60 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nextChapter"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="לפרק הבא" />
+    <item
+        android:id="@+id/previousChapter"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="לפרק הקודם" />
+    <item
+        android:id="@+id/nightMode"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="מצב לילה" />
+
+    <item
+        android:id="@+id/zoomUp"
+        android:icon="@android:drawable/btn_plus"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="הגדלת פונט" />
+
+    <item
+        android:id="@+id/zoomDown"
+        android:icon="@android:drawable/btn_minus"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="הקטנת פונט" />
+
+
+    <item
+        android:id="@+id/previousSearch"
+        android:icon="@android:drawable/arrow_up_float"
+        android:showAsAction="always"
+        android:title="הקודם"
+        android:visible="false"
+
+        />
+    <item
+        android:id="@+id/nextSearch"
+        android:icon="@android:drawable/arrow_down_float"
+        android:showAsAction="always"
+        android:title="הבא"
+        android:visible="false"
+
+        />
+
+    <item
+        android:id="@+id/menu_item_search"
+        android:actionViewClass="android.widget.SearchView"
+        android:showAsAction="always"
+        android:title="חיפוש"
+        android:visible="false"
+
+        />
+
+</menu>
