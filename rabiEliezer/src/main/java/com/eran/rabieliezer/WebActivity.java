@@ -174,10 +174,7 @@ public class WebActivity extends Activity {
         super.onResume();//Always call the superclass method first
 
         startRingerMode = am.getRingerMode();
-
-        if (!phoneStatus.equals("-1") && startRingerMode != 0/*silent*/) {
-            am.setRingerMode(Integer.parseInt(phoneStatus));
-        }
+        Utils.setRingerMode(this, Integer.parseInt(phoneStatus), startRingerMode);
     }
 
     @SuppressLint("NewApi")
