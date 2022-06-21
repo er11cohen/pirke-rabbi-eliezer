@@ -12,15 +12,12 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
@@ -62,16 +59,12 @@ public class WebActivity extends Activity {
     String perekName;
     int perekIndex;
     boolean pageReady = false;
-    GestureDetector gs = null;
     ActionBar actionBar = null;
-    int activeMatch = 0;
-    int totalMatch = 0;
     String currentQuery = "";
     int noResultCount = 0;
     SearchView searchView;
     Boolean isFirstOnPageFinished = true;
     String appName = "/RabiEliezer";
-    int lastPageIndex = 5;
 
     public enum Search {
         WITHOUT_SEARCH, PREVIOUS_SEARCH, NEXT_SEARCH
@@ -84,23 +77,13 @@ public class WebActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         fullScreen = defaultSharedPreferences.getBoolean("CBFullScreen", false);
-
-        if (fullScreen && android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-            this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-
         setContentView(R.layout.activity_web);
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
-            actionBar = getActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            if (fullScreen) {
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-                actionBar.hide();
-            }
+        actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (fullScreen) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            actionBar.hide();
         }
 
         boolean keepScreenOn = defaultSharedPreferences.getBoolean("CBKeepScreenOn", false);
@@ -161,12 +144,8 @@ public class WebActivity extends Activity {
         wvSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
         wvSetting.setJavaScriptEnabled(true);
         LoadWebView(/*Search.WITHOUT_SEARCH*/);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
-            WeakReference<Activity> WeakReferenceActivity = new WeakReference<Activity>(this);
-            Utils.toggleFullScreen(WeakReferenceActivity, getApplicationContext(), R.id.webView, actionBar, fullScreen);
-        }
-
         WeakReference<Activity> WeakReferenceActivity = new WeakReference<Activity>(this);
+        Utils.toggleFullScreen(WeakReferenceActivity, getApplicationContext(), R.id.webView, actionBar, fullScreen);
         Utils.firstDoubleClickInfo(defaultSharedPreferences, WeakReferenceActivity);
     }
 
@@ -190,7 +169,7 @@ public class WebActivity extends Activity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
 
             MenuItem searchItem = menu.findItem(R.id.menu_item_search);
-            searchItem.setVisible(true);///////////////////////////
+            searchItem.setVisible(true);
             searchView = (SearchView) searchItem.getActionView();
             searchView.setQueryHint("חיפוש בפרק הנוכחי");
 
