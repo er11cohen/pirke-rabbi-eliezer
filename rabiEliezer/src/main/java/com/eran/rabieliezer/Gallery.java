@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -18,6 +17,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow.LayoutParams;
+
+import com.eran.utils.Utils;
 
 import java.io.File;
 import java.util.Arrays;
@@ -42,7 +43,8 @@ public class Gallery extends Activity {
 
         myGallery = (LinearLayout) findViewById(R.id.mygallery);
 
-        String targetPath = Environment.getExternalStorageDirectory() + appName + "/";
+        File path = Utils.getFilePath(getApplicationContext());
+        String targetPath = path + appName + "/";
 
         File targetDirector = new File(targetPath);
         if (!targetDirector.exists()) {
@@ -54,7 +56,7 @@ public class Gallery extends Activity {
         String preferencesLocationsJson = preferences.getString("preferencesLocationsJson", null);
         if (preferencesLocationsJson == null)//for second install, remove the old files
         {
-            File folder = new File(Environment.getExternalStorageDirectory() + appName);
+            File folder = new File(path + appName);
             if (folder.isDirectory()) {
                 String[] children = folder.list();
                 for (int i = 0; i < children.length; i++) {

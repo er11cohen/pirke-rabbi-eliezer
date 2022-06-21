@@ -378,7 +378,8 @@ public class WebActivity extends Activity {
             am.setRingerMode(startRingerMode);
         }
 
-        File folder = new File(Environment.getExternalStorageDirectory() + appName);
+        File path = Utils.getFilePath(getApplicationContext());
+        File folder = new File(path + appName);
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdir();
@@ -404,7 +405,7 @@ public class WebActivity extends Activity {
             View content = findViewById(R.id.layout);
             content.setDrawingCacheEnabled(true);
             Bitmap bitmap = content.getDrawingCache();
-            File file = new File(Environment.getExternalStorageDirectory() + appName + "/" + currentTime + ".png");
+            File file = new File(path + appName + "/" + currentTime + ".png");
             ArrayList<Perek> locationList = new ArrayList<Perek>();
             Gson gson = new Gson();
             try {
@@ -422,7 +423,7 @@ public class WebActivity extends Activity {
                     }.getType());
                     if (locationList.size() >= 10) {
                         String idFirstLocation = locationList.get(0).getTime();
-                        File imageToDelete = new File(Environment.getExternalStorageDirectory() + appName + "/" + idFirstLocation + ".png");
+                        File imageToDelete = new File(path + appName + "/" + idFirstLocation + ".png");
                         if (imageToDelete.exists()) {
                             boolean deleted = imageToDelete.delete();
                         }
