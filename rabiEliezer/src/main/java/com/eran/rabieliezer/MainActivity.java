@@ -1,15 +1,20 @@
 package com.eran.rabieliezer;
 
+import android.R.drawable;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eran.utils.Utils;
@@ -140,28 +146,28 @@ public class MainActivity extends Activity {
         weakReferenceActivity = new WeakReference<Activity>(this);
 
 
-//		String version = sharedPreferences.getString("version","-1");
-//	    if (!version.equals("1.0.2"))  
-//	    {
-//	    	 String message = Utils.ReadTxtFile("files/newVersion.txt",getApplicationContext());
-//			 ((TextView) new AlertDialog.Builder(this)
-//			    .setTitle("חדשות ללומדי פרקי רבי אליעזר")
-//			    .setIcon(android.R.drawable.ic_menu_info_details)
-//			    .setIcon(drawable.ic_input_add)
-//			    .setMessage(Html.fromHtml(message))
-//			    .setPositiveButton("אשריכם תזכו למצוות", new DialogInterface.OnClickListener() {
-//			        public void onClick(DialogInterface dialog, int which) { 
-//			        	dialog.cancel();
-//			        }
-//			     })
-//			    .show()
-//			    .findViewById(android.R.id.message))
-//			    .setMovementMethod(LinkMovementMethod.getInstance());
-//	    	 
-//			 SharedPreferences.Editor editor = sharedPreferences.edit();
-//		 	 editor.putString("version","1.0.2");
-//		 	 editor.commit();
-//		}
+		String version = sharedPreferences.getString("version","-1");
+	    if (!version.equals("1.0.1"))
+	    {
+	    	 String message = Utils.ReadTxtFile("files/newVersion.txt",getApplicationContext());
+			 ((TextView) new AlertDialog.Builder(this)
+			    .setTitle("חדשות ללומדי פרקי רבי אליעזר")
+			    .setIcon(android.R.drawable.ic_menu_info_details)
+			    .setIcon(drawable.ic_input_add)
+			    .setMessage(Html.fromHtml(message))
+			    .setPositiveButton("אשריכם תזכו למצוות", new DialogInterface.OnClickListener() {
+			        public void onClick(DialogInterface dialog, int which) {
+			        	dialog.cancel();
+			        }
+			     })
+			    .show()
+			    .findViewById(android.R.id.message))
+			    .setMovementMethod(LinkMovementMethod.getInstance());
+
+			 SharedPreferences.Editor editor = sharedPreferences.edit();
+		 	 editor.putString("version","1.0.1");
+		 	 editor.commit();
+		}
     }
 
     private void setupDrawer() {
