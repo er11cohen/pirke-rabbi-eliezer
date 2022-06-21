@@ -116,7 +116,8 @@ public class MainActivity extends Activity {
 
         setupDrawer();
         mDrawerToggle.setDrawerIndicatorEnabled(true);
-        dLayout.setDrawerListener(mDrawerToggle);
+        dLayout.addDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState(); //set the back icon on title
 
         lv = (ListView) findViewById(R.id.ListViewHlach);
         alPerekFilter = new ArrayList<Perek>();
