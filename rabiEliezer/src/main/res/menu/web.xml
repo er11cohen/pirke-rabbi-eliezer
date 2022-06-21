@@ -1,16 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nextChapter"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="לפרק הבא" />
-    <item
-        android:id="@+id/previousChapter"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="לפרק הקודם" />
-    <item
         android:id="@+id/nightMode"
         android:orderInCategory="100"
         android:showAsAction="never"
@@ -36,25 +26,31 @@
         android:icon="@android:drawable/arrow_up_float"
         android:showAsAction="always"
         android:title="הקודם"
-        android:visible="false"
-
-        />
+        android:visible="false" />
     <item
         android:id="@+id/nextSearch"
         android:icon="@android:drawable/arrow_down_float"
         android:showAsAction="always"
         android:title="הבא"
-        android:visible="false"
-
-        />
+        android:visible="false" />
 
     <item
         android:id="@+id/menu_item_search"
         android:actionViewClass="android.widget.SearchView"
         android:showAsAction="always"
         android:title="חיפוש"
-        android:visible="false"
+        android:visible="false" />
 
-        />
+    <item
+        android:id="@+id/nextChapter"
+        android:icon="@drawable/left_arrow"
+        android:showAsAction="always"
+        android:title="לפרק הבא"></item>
+
+    <item
+        android:id="@+id/previousChapter"
+        android:icon="@drawable/right_arrow"
+        android:showAsAction="always"
+        android:title="לפרק הקודם"></item>
 
 </menu>

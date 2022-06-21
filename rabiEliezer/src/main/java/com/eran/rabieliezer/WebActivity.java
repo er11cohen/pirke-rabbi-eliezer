@@ -47,8 +47,10 @@ public class WebActivity extends Activity {
     WebSettings wvSetting;
     int scrollY = 0;
     MenuItem nightModeItem = null;
-    MenuItem PreviousSearch = null;
-    MenuItem NextSearch = null;
+    MenuItem previousSearch = null;
+    MenuItem nextSearch = null;
+    MenuItem previousChapter = null;
+    MenuItem nextChapter = null;
     SharedPreferences rabiEliezerPreferences;
     SharedPreferences defaultSharedPreferences;
     boolean fullScreen = false;
@@ -162,8 +164,10 @@ public class WebActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.web, menu);
         nightModeItem = menu.findItem(R.id.nightMode);
-        PreviousSearch = menu.findItem(R.id.previousSearch);
-        NextSearch = menu.findItem(R.id.nextSearch);
+        previousSearch = menu.findItem(R.id.previousSearch);
+        nextSearch = menu.findItem(R.id.nextSearch);
+        previousChapter = menu.findItem(R.id.previousChapter);
+        nextChapter = menu.findItem(R.id.nextChapter);
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
@@ -210,7 +214,8 @@ public class WebActivity extends Activity {
             searchView.setOnSearchClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
-                    // TODO Auto-generated method stub
+                    previousChapter.setVisible(false);
+                    nextChapter.setVisible(false);
                 }
             });
         }
@@ -262,8 +267,8 @@ public class WebActivity extends Activity {
 
         wv.findAllAsync(query);
 
-        PreviousSearch.setVisible(true);
-        NextSearch.setVisible(true);
+        previousSearch.setVisible(true);
+        nextSearch.setVisible(true);
 
         wv.setFindListener(new FindListener() {
 
@@ -310,8 +315,6 @@ public class WebActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
 
-                //if(searchKind == Search.WITHOUT_SEARCH)
-                //{
                 if (isFirstOnPageFinished) {
                     Utils.showWebView(wv, progressBar, true);
                 }
@@ -329,13 +332,6 @@ public class WebActivity extends Activity {
                         Utils.setOpacity(wv, 1);
                     }
                 }, 500);
-                //	}
-//            	else//fromSearch
-//            	{
-//            		ChangeWebViewBySettings();
-//            		find(currentQuery, searchKind);
-//            		Utils.setOpacity(wv, 1);
-//            	}
             }
         });
 
@@ -461,8 +457,10 @@ public class WebActivity extends Activity {
     @SuppressLint("NewApi")
     private void closeSearch(Boolean fromListener) {
         wv.clearMatches();//clear the finds
-        PreviousSearch.setVisible(false);
-        NextSearch.setVisible(false);
+        previousSearch.setVisible(false);
+        nextSearch.setVisible(false);
+        previousChapter.setVisible(true);
+        nextChapter.setVisible(true);
 
         if (!fromListener) {// the listener do this by himself
             searchView.setIconified(true);// clear the searchView
