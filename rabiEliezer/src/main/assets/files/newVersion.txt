@@ -1,7 +1,7 @@
 ﻿
-<b> גרסה 1.0.1 </b><br><br>
+<b> גרסה 1.0.2 </b><br><br>
 
-נוספה תמיכה באנדרואיד 12 <br><br>
+נוספה תמיכה באנדרואיד 14 <br><br>
 
 העלנו אפלקציה חדשה לציבור <br>
 <a href="https://play.google.com/store/apps/details?id=com.eran.bircatlevana" >תזכורת לברכת לבנה (קידוש לבנה)</a> <br>
