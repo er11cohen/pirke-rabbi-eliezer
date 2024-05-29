@@ -2,4 +2,5 @@
     android:label="@string/app_name"
     android:hint="חיפוש"
     android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+    android:voiceLanguage="@string/locale"
     />

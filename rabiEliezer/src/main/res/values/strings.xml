@@ -18,4 +18,5 @@
     
      <string name="drawer_open">פתח תפריט</string>
 	<string name="drawer_close">סגור תפריט</string>
+    <string name="locale">he-IL</string>
 </resources>
